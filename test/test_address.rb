@@ -142,6 +142,21 @@ class TestAddress < Test::Unit::TestCase
         :local        => 'aamine',
         :domain       => 'loveruby.net',
         :format       => 'Minero Aoki <aamine@loveruby.net>'
+        
+    validate_case__address '"Minero Aoki" <aamine@loveruby.net>,',
+        :display_name => 'Minero Aoki',
+        :address      => 'aamine@loveruby.net',
+        :local        => 'aamine',
+        :domain       => 'loveruby.net',
+        :format       => 'Minero Aoki <aamine@loveruby.net>'
+        
+    validate_case__address '"Jane_ODolan@" <Dell.com Jane_ODolan@Dell.com>',
+      :display_name => 'Jane_ODolan@',
+      :address      => 'Jane_ODolan@Dell.com',
+      :comments     => [ 'Dell.com' ],
+      :local        => 'Jane_ODolan',
+      :domain       => 'Dell.com',
+      :format       => 'Jane_ODolan@ <Dell.com Jane_ODolan@Dell.com>'
 
     # integer in domain
     validate_case__address 'Minero Aoki<aamine@0246.loveruby.net>',

@@ -29,6 +29,13 @@ class UnstructuredHeaderTester < Test::Unit::TestCase
       assert_equal str, h.to_s
     end
   end
+  
+  def test_remove_leading_space
+    str = '"Lily Foley" <hsucher@centuryarms.com> From: "Lily Foley" <hsucher@centuryarms.com>'
+    h = TMail::HeaderField.new(' From', str)
+    assert_equal str, h.decoded
+  end
+  
 end
 
 class DateTimeHeaderTester < Test::Unit::TestCase

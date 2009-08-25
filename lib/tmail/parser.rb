@@ -63,6 +63,10 @@ module_eval <<'..end lib/tmail/parser.y modeval..id2dd1c7d21d', 'lib/tmail/parse
     # '"Mikel A." <mikel@me.com>'
     when str =~ /\A(.*?\.)\s(<.*?>)\s*\Z/
       return "\"#{$1}\" #{$2}"
+    when str =~ /\A(.+@.+)\s<(.+\s)?(.*?)>\Z/
+      return "#{$1} <#{$3}>"
+    when str =~ /(.*),\Z/
+      return $1
     else
       str
     end
